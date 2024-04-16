@@ -1,0 +1,132 @@
+<html>
+<head>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        
+        body {
+            width: 500px;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #downloadCSV {
+            color: #B4B4B4;
+            margin-left: auto; 
+            margin-right: 0;
+            background: #8CB9F3;
+            color: white
+        }
+
+        #downloadCSV:disabled {
+            background: #E5E5E5;
+            cursor: not-allowed;
+        }
+
+        #avgBuildPriceDiv {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .list {
+            margin: 20px 0;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            padding: 10px; /* Add some spacing around items */
+            border: 1px solid #ccc; /* Add a border for clarity */
+        }
+
+        .list > div {
+            display: flex;
+            margin-bottom: 40px;
+        }
+
+        .imgDiv {
+            text-align: center;
+        }
+
+        .list > div > div {
+            flex-basis: 150px;
+        }
+    </style>
+</head>
+<body style="width: 500px">
+    <h1>POE Ninja build price checker</h1>
+    <form id="myForm">
+
+        <span>Important notes:</span>
+        <ul style="list-style-type:circle">
+            <li>To check the price of a build, a poe.ninja build tab must be active.</li>
+            <li>The tool doesn't use sockets, sockets colors and links on the search.</li>
+            <li>If no result was found, you can click on the trade link and try to change the values or deselect a mod. (Keep in mind that clicking on another tab will close the extension).</li>
+            <li>CSV download is enabled after loading the items. The CSV contains all the links to the poe trade.</li>
+        </ul>
+
+        <label for="onlineOption" id="onlineOptionLabel">
+            <input type="radio" name="priceOption" id="onlineOption" value="online" checked> Online only
+        </label>
+        <label for="anyOption" id="anyOptionLabel">
+            <input type="radio" name="priceOption" id="anyOption" value="any"> Any
+        </label>
+
+        <input id="downloadCSV" type="submit" disabled value="Download CSV" />
+
+        <br><br>
+        <input id="checkPrice" type="submit" value="Check Price" />
+
+        <div>
+            <div id="avgBuildPriceDiv">Average price build: <span id="avgBuildPrice"></span></div>
+        </div>
+
+        
+
+        <div id="itemsList" class="list">
+            Items List:
+        </div>
+
+        <div id="skillsList" class="list">
+            Skills List:
+        </div>
+
+        <div id="flasksList" class="list">
+            Flasks List:
+        </div>
+
+        <div id="jewelsList" class="list">
+            Jewels List:
+        </div>
+    </form>
+    <script type='text/javascript' src='popup.js'></script>
+</body>
